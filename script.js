@@ -10,3 +10,25 @@ function placeOrder() {
     // Redirect to the orders page
     window.location.href = 'orders.html';
 }
+// script.js
+
+// ... existing code ...
+
+async function sendOrderToServer(order) {
+    try {
+        const response = await fetch('https://your-server-url.com/place-order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(order),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to place order');
+        }
+    } catch (error) {
+        console.error('Error sending order to server:', error);
+        // Handle error appropriately
+    }
+}
